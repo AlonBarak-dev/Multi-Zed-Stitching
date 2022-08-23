@@ -1,0 +1,8 @@
+# Serialized boofcv.alg.fiducial.calib.ConfigCalibrationTarget
+BoofCV.GIT_SHA: 7cb096c1fa5bd46b713ada4af1d1b859696e50ad
+boofcv.alg.fiducial.calib.ConfigCalibrationTarget:
+  grid:
+    numRows: 7
+    shapeSize: 1.0
+    numCols: 5
+BoofCV.Version: '0.40'
