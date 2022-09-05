@@ -42,8 +42,7 @@ def stitch_images():
         # left_img_ = cv2.imread("left_.jpg")
         # right_img_ = cv2.imread("right_.jpg")
         try:
-            # left_img = cv2.resize(left_img, (0, 0), fx=0.4, fy=0.4)
-            # right_img = cv2.resize(right_img, (0, 0), fx=0.4, fy=0.4)
+
             stitch_list = [left_img, right_img]
             print("[INFO] stitching images...")
             stitcher = cv2.Stitcher_create()
@@ -83,6 +82,7 @@ def grab_run():
         err = zed.grab(runtime)
         if err == sl.ERROR_CODE.SUCCESS:
             zed.retrieve_image(left_list[0], sl.VIEW.LEFT)
+            # print(left_list[0].get_data())
             # cv2.imshow("left", left_list[0].get_data())
             # key = cv2.waitKey(10)
             # path = "DATA/LEFT/left_" + str(left_ind) + ".jpg"

@@ -1,6 +1,8 @@
 import sys
-import ogl_viewer.viewer as gl
+import ogl_depth.ogl_viewer.viewer as gl
 import pyzed.sl as sl
+import open3d as o3d
+
 
 if __name__ == "__main__":
     print("Running Depth Sensing sample ... Press 'Esc' to quit")
@@ -10,6 +12,7 @@ if __name__ == "__main__":
                                  coordinate_units=sl.UNIT.METER,
                                  coordinate_system=sl.COORDINATE_SYSTEM.RIGHT_HANDED_Y_UP)
     zed = sl.Camera()
+    # init.set_from_serial_number(34769939)
     status = zed.open(init)
     if status != sl.ERROR_CODE.SUCCESS:
         print(repr(status))
@@ -29,6 +32,9 @@ if __name__ == "__main__":
     while viewer.is_available():
         if zed.grab() == sl.ERROR_CODE.SUCCESS:
             zed.retrieve_measure(point_cloud, sl.MEASURE.XYZRGBA,sl.MEM.CPU, res)
+            # pcd = o3d.geometry.PointCloud()
+            # pcd.points = o3d.utility.Vector3iVector(point_cloud)
+            # o3d.visualization.draw_geometries([pcd])
             viewer.updateData(point_cloud)
 
     viewer.exit()
